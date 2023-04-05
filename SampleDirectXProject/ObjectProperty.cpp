@@ -1,7 +1,7 @@
 #include "ObjectProperty.h"
 #include "GameObjectManager.h"
 #include "TextureComponent.h"
-#include "PhysicsComponent.h"
+//#include "PhysicsComponent.h"
 #include "ActionHistory.h"
 
 ObjectProperty::ObjectProperty() : UIScreen("ObjectProperty", true)
@@ -112,7 +112,7 @@ void ObjectProperty::DrawUI()
 		}
 
 		// Existing physics component
-		if (selectedObj->GetComponent<PhysicsComponent>() != NULL)
+		/*if (selectedObj->GetComponent<PhysicsComponent>() != NULL)
 		{
 			if (selectedObj->GetComponent<PhysicsComponent>()->GetBodyType() == reactphysics3d::BodyType::DYNAMIC)
 			{
@@ -141,7 +141,7 @@ void ObjectProperty::DrawUI()
 				PhysicsComponent* component = new PhysicsComponent();
 				selectedObj->AttachComponent(component);
 			}
-		}
+		}*/
 	}
 
 	ImGui::End();

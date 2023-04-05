@@ -4,9 +4,7 @@
 #include <string>
 #include "GameObject.h"
 #include "SimpleMath.h"
-#include <reactphysics3d/reactphysics3d.h>
 
-using namespace reactphysics3d;
 using namespace DirectX;
 
 class GameObject;
@@ -26,6 +24,7 @@ public:
 	void Update();
 
 public:
+	GameObject* CreateEmpty();
 	void CreateGameObject();
 	GameObject* CreateCube();
 	void CreateCubes(int amount);
@@ -38,6 +37,7 @@ public:
 	GameObject* CreateSphere();
 	GameObject* CreateCapsule();
 	GameObject* CreateCylinder();
+	void DestroyGameObject(GameObject* obj);
 
 public:
 	GameObject* FindObjectByName(std::string name);
@@ -64,10 +64,6 @@ private:
 	GameObject* selectedObj;
 
 public:
-	PhysicsWorld* GetPhysicsWorld();
-	PhysicsCommon* GetPhysicsCommon();
-
-public:
 	const std::string NAME_CUBE = "Cube";
 	const std::string NAME_PLANE = "Plane";
 	const std::string NAME_SPHERE = "Sphere";
@@ -77,8 +73,5 @@ public:
 	const std::string NAME_BUNNY = "Bunny";
 	const std::string NAME_ARMADILLO = "Armadillo";
 	const std::string NAME_LUCY = "Lucy";
-private:
-	PhysicsCommon* physicsCommon;
-	PhysicsWorld* physicsWorld;
 };
 

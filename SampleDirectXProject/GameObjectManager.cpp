@@ -8,7 +8,7 @@
 #include "TextureManager.h"
 #include "MeshManager.h"
 #include "TransformComponent.h"
-#include "PhysicsComponent.h"
+//#include "PhysicsComponent.h"
 #include "EngineBackend.h"
 #include "EditorAction.h"
 #include <random>
@@ -17,11 +17,11 @@ GameObjectManager* GameObjectManager::instance = nullptr;
 
 GameObjectManager::GameObjectManager()
 {
-    this->physicsCommon = new PhysicsCommon();
+   /* this->physicsCommon = new PhysicsCommon();
     PhysicsWorld::WorldSettings settings;
     settings.defaultVelocitySolverNbIterations = 50;
     settings.gravity = reactphysics3d::Vector3(0, -9.81, 0);
-    this->physicsWorld = this->physicsCommon->createPhysicsWorld(settings);
+    this->physicsWorld = this->physicsCommon->createPhysicsWorld(settings);*/
 }
 
 void GameObjectManager::Initialize()
@@ -40,15 +40,23 @@ void GameObjectManager::Update()
 
     if (delta > 0.0f)
     {
-        if (EngineBackend::Get()->GetMode() == EditorMode::PLAY || 
+       /* if (EngineBackend::Get()->GetMode() == EditorMode::PLAY || 
             (EngineBackend::Get()->GetMode() == EditorMode::PAUSED && EngineBackend::Get()->InsideFrameStep()))
-            physicsWorld->update(delta);
+            physicsWorld->update(delta);*/
         for (const auto& gameObject : gameObjectList)
         {
             if(gameObject->IsEnable())
 				gameObject->Update(delta);
         }
     }
+}
+
+GameObject* GameObjectManager::CreateEmpty()
+{
+    GameObject* newObj = GameObject::Instantiate();
+    gameObjectList.push_back(newObj);
+
+    return newObj;
 }
 
 void GameObjectManager::CreateGameObject()
@@ -117,8 +125,8 @@ void GameObjectManager::CreateCubes(int amount)
 
         obj->GetTransform()->SetEulerAngles({ (float)distr2(gen), (float)distr2(gen), (float)distr2(gen) });
 
-        PhysicsComponent* physics = new PhysicsComponent();
-        obj->AttachComponent(physics);
+        //PhysicsComponent* physics = new PhysicsComponent();
+        //obj->AttachComponent(physics);
     }
 }
 
@@ -127,8 +135,8 @@ void GameObjectManager::CreatePhysicsCubes(int amount)
     for (int i = 0; i < amount; i++)
     {
         GameObject* cube = CreateCube();
-        PhysicsComponent* component = new PhysicsComponent();
-        cube->AttachComponent(component);
+        //PhysicsComponent* component = new PhysicsComponent();
+        //cube->AttachComponent(component);
 
         if (TransformComponent* transform = cube->GetTransform())
         {
@@ -277,6 +285,15 @@ GameObject* GameObjectManager::CreateCylinder()
     SelectGameObject(obj);
 
     return obj;
+}
+
+void GameObjectManager::DestroyGameObject(GameObject* obj)
+{
+    std::vector<GameObject*>::iterator position = std::find(gameObjectList.begin(), gameObjectList.end(), obj);
+    if (position != gameObjectList.end())
+        gameObjectList.erase(position);
+
+    delete obj;
 }
 
 GameObject* GameObjectManager::FindObjectByName(std::string name)
@@ -452,8 +469,8 @@ void GameObjectManager::CreateObjectFromFile(std::string name, PrimitiveType typ
 
     if (hasPhysics)
     {
-        PhysicsComponent* physics = new PhysicsComponent();
-        obj->AttachComponent(physics);
+        //PhysicsComponent* physics = new PhysicsComponent();
+        //obj->AttachComponent(physics);
     }
 }
 
@@ -504,12 +521,12 @@ const std::vector<GameObject*> GameObjectManager::GetRoots() const
     return roots;
 }
 
-PhysicsWorld* GameObjectManager::GetPhysicsWorld()
-{
-    return physicsWorld;
-}
-
-PhysicsCommon* GameObjectManager::GetPhysicsCommon()
-{
-    return physicsCommon;
-}
+//PhysicsWorld* GameObjectManager::GetPhysicsWorld()
+//{
+//    return physicsWorld;
+//}
+//
+//PhysicsCommon* GameObjectManager::GetPhysicsCommon()
+//{
+//    return physicsCommon;
+//}

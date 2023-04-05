@@ -51,7 +51,7 @@ void MeshComponent::Start()
 
 void MeshComponent::Update(float deltaTime)
 {
-	CalculateBounds();
+	//CalculateBounds();
 
 	constant cc;
 	cc.m_time = deltaTime;
@@ -102,7 +102,7 @@ void MeshComponent::SetMesh(Mesh* inMesh)
 {
 	mesh = inMesh;
 
-	CalculateBounds();
+	//CalculateBounds();
 
 	void* shader_byte_code = nullptr;
 	size_t size_shader = 0;
@@ -129,27 +129,27 @@ void MeshComponent::SetMesh(Mesh* inMesh)
 	m_cb = GraphicsEngine::get()->getRenderSystem()->createConstantBuffer(&cc, sizeof(constant));
 }
 
-void MeshComponent::CalculateBounds()
-{
-	if (!mesh)
-		return;
-
-	size_t size = mesh->GetVertices().size();
-
-	SimpleMath::Vector3* points = new SimpleMath::Vector3[size];
-
-	for (size_t i = 0; i < size; i++)
-	{
-		points[i] = mesh->GetVertices()[i].position;
-	}
-
-	BoundingBox::CreateFromPoints(bounds, size, points, sizeof(SimpleMath::Vector3));
-	bounds.Transform(bounds, GetOwner()->GetTransform()->GetLocalToWorldMatrix());
-	//sphereBounds.Transform(sphereBounds, GetOwner()->GetTransform()->GetWorldMatrix());
-
-	//std::cout << "Extents: ";
-	//std::cout << "X: " << bounds.Extents.x << " Y: " << bounds.Extents.y << " Z: " << bounds.Extents.z << std::endl;
-}
+//void MeshComponent::CalculateBounds()
+//{
+//	if (!mesh)
+//		return;
+//
+//	size_t size = mesh->GetVertices().size();
+//
+//	SimpleMath::Vector3* points = new SimpleMath::Vector3[size];
+//
+//	for (size_t i = 0; i < size; i++)
+//	{
+//		points[i] = mesh->GetVertices()[i].position;
+//	}
+//
+//	BoundingBox::CreateFromPoints(bounds, size, points, sizeof(SimpleMath::Vector3));
+//	bounds.Transform(bounds, GetOwner()->GetTransform()->GetLocalToWorldMatrix());
+//	//sphereBounds.Transform(sphereBounds, GetOwner()->GetTransform()->GetWorldMatrix());
+//
+//	//std::cout << "Extents: ";
+//	//std::cout << "X: " << bounds.Extents.x << " Y: " << bounds.Extents.y << " Z: " << bounds.Extents.z << std::endl;
+//}
 
 BoundingBox MeshComponent::GetBounds() const
 {

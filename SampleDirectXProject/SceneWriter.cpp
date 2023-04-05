@@ -4,7 +4,7 @@
 #include "GameObject.h"
 #include "TransformComponent.h"
 #include "GameObjectManager.h"
-#include "PhysicsComponent.h"
+//#include "PhysicsComponent.h"
 #include "SimpleMath.h"
 
 using namespace DirectX;
@@ -88,7 +88,7 @@ void SceneWriter::WriteToFile()
 		root[I]["position"].append(posVal);
 		root[I]["rotation"].append(rotVal);
 		root[I]["scale"].append(sclVal);
-		root[I]["hasPhysics"] = (bool)allObjects[i]->GetComponent<PhysicsComponent>();
+		//root[I]["hasPhysics"] = (bool)allObjects[i]->GetComponent<PhysicsComponent>();
 	}
 	writer->write(root, &std::cout);
 	sceneFile << root;

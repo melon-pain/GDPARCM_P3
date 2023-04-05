@@ -25,7 +25,7 @@ public:
 	void Update(float deltaTime) override;
 	void SetMesh(Mesh* inMesh);
 
-	void CalculateBounds();
+	//void CalculateBounds();
 	BoundingBox GetBounds() const;
 
 	bool GetOutlined() const;

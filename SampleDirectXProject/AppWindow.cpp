@@ -18,6 +18,8 @@
 #include "EngineBackend.h"
 #include "ActionHistory.h"
 
+#include "Scene.h"
+
 // IMGUI
 #include <ctype.h> 
 #include <limits.h> 
@@ -78,6 +80,14 @@ void AppWindow::onCreate()
 
 	GameObjectManager::Initialize();
 	UIManager::Initialize(this->m_hwnd);
+
+	/*for (int i = 0; i < 5; i++)
+	{
+		Scene* scene = new Scene(i);
+	}*/
+
+	Scene* scene = new Scene(0);
+	scene->LoadScene();
 }
 
 void AppWindow::onUpdate()

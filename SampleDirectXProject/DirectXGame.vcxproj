@@ -100,7 +100,7 @@
       <PreprocessorDefinitions>NOMINMAX;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>d3dcompiler.lib;d3d11.lib;dxguid.lib;dinput8.lib;comctl32.lib;DirectXTexD.lib;reactphysics3d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3dcompiler.lib;d3d11.lib;dxguid.lib;dinput8.lib;comctl32.lib;DirectXTexD.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -171,11 +171,11 @@
     <ClCompile Include="MenuBar.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
+    <ClCompile Include="MeshLoader.cpp" />
     <ClCompile Include="MeshManager.cpp" />
     <ClCompile Include="ObjectParentingScreen.cpp" />
     <ClCompile Include="ObjectProperty.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="PixelShader.cpp" />
     <ClCompile Include="PlaybackScreen.cpp" />
     <ClCompile Include="PoolWorkerThread.cpp" />
@@ -187,6 +187,7 @@
     <ClCompile Include="SceneReader.cpp" />
     <ClCompile Include="SceneWriter.cpp" />
     <ClCompile Include="SimpleMath.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="StringUtils.cpp" />
     <ClCompile Include="SwapChain.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -223,6 +224,8 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="GraphicsEngine.h" />
+    <ClInclude Include="MeshLoader.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="IETThread.h" />
     <ClInclude Include="IExecutionEvent.h" />
     <ClInclude Include="imfilebrowser.h" />
@@ -260,7 +263,6 @@
     <ClInclude Include="ObjectParentingScreen.h" />
     <ClInclude Include="ObjectProperty.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="PixelShader.h" />
     <ClInclude Include="PlaybackScreen.h" />
     <ClInclude Include="Point.h" />
