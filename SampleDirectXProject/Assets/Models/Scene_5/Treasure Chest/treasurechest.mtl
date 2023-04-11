@@ -1,0 +1,20 @@
+# Material file for treasurechest.obj
+
+newmtl trasurechest_chest
+	Ns 0
+	d 1
+	illum 2
+	Kd 0.8 0.8 0.8
+	Ks 0.0 0.0 0.0
+	Ka 0.2 0.2 0.2
+	map_Kd 9149b880.png
+
+newmtl treasurechest_lock
+	Ns 0
+	d 1
+	illum 2
+	Kd 0.8 0.8 0.8
+	Ks 0.0 0.0 0.0
+	Ka 0.2 0.2 0.2
+	map_Kd f295fedb.png
+
