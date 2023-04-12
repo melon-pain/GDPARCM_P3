@@ -1,10 +1,11 @@
 #include "MeshManager.h"
 #include "Mesh.h"
+#include "IETSemaphore.h"
 
 MeshManager::MeshManager()
 {
+	mutex = new IETSemaphore(1);
 }
-
 
 MeshManager::~MeshManager()
 {
@@ -24,6 +25,7 @@ Mesh* MeshManager::GetLoadedMesh(const wchar_t* file_path)
 
 Resource* MeshManager::CreateResourceFromFileConcerete(const wchar_t* file_path)
 {
+	mutex->acquire();
 	Mesh* mesh = nullptr;
 	try
 	{
@@ -33,6 +35,8 @@ Resource* MeshManager::CreateResourceFromFileConcerete(const wchar_t* file_path)
 
 	if (mesh)
 		loadedMeshes.emplace(file_path, mesh);
+
+	mutex->release();
 
 	return mesh;
 }

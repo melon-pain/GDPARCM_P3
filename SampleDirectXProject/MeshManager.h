@@ -2,6 +2,7 @@
 #include "ResourceManager.h"
 #include <unordered_map>
 
+class IETSemaphore;
 class Mesh;
 class MeshManager : public ResourceManager
 {
@@ -14,5 +15,6 @@ protected:
 	// Inherited via ResourceManager
 	virtual Resource* CreateResourceFromFileConcerete(const wchar_t* file_path) override;
 	std::unordered_map<const wchar_t*, Mesh*> loadedMeshes;
+	IETSemaphore* mutex;
 };
 

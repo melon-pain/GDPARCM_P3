@@ -21,9 +21,9 @@ void Scene::LoadScene()
 	{
 		GameObject* obj = GameObjectManager::Get()->CreateEmpty();
 
-		float X = -5.f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (5.f - -5.f)));
-		float Y = -5.f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (5.f - -5.f)));
-		float Z = -5.f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (5.f - -5.f)));
+		float X = -2.f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (2.f - -2.f)));
+		float Y = -2.f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (2.f - -2.f)));
+		float Z = -2.f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (2.f - -2.f)));
 		obj->GetTransform()->SetPosition({ X, Y, Z });
 
 		gameObjects.push_back(obj);
@@ -56,18 +56,18 @@ float Scene::GetProgress() const
 void Scene::onFinishedExecution()
 {
 	// Load models here based on pool
-	
-	for (int i = 0; i < MODEL_COUNT; i++)
-	{
-		MeshComponent* comp = new MeshComponent();
-		Mesh* mesh = GraphicsEngine::get()->getMeshManager()->GetLoadedMesh(pools[pool_index][i].c_str());
-		comp->SetMesh(mesh);
-
-		gameObjects[i]->AttachComponent(comp);
-	}
-
 	count++;
 
 	if (count == MODEL_COUNT)
+	{
 		isLoaded = true;
+		for (int i = 0; i < MODEL_COUNT; i++)
+		{
+			MeshComponent* comp = new MeshComponent();
+			Mesh* mesh = GraphicsEngine::get()->getMeshManager()->GetLoadedMesh(pools[pool_index][i].c_str());
+			comp->SetMesh(mesh);
+
+			gameObjects[i]->AttachComponent(comp);
+		}
+	}
 }
