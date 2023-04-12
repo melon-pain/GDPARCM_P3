@@ -3,16 +3,25 @@
 #include <vector>
 #include <string>
 
+enum class SceneState {
+	Standby,
+	Loading,
+	Loaded
+};
+
 class ThreadPool;
 class GameObject;
 class Scene : public IExecutionEvent
 {
+public:
+	
 public:
 	Scene(int _pool);
 	virtual void LoadScene();
 	void UnloadScene();
 
 	float GetProgress() const;
+	SceneState GetState() const;
 
 private:
 	ThreadPool* threadPool;
@@ -22,6 +31,8 @@ private:
 	bool isLoaded = false;
 	int count = 0;
 	const int MODEL_COUNT = 5;
+
+	SceneState state = SceneState::Standby;
 
 	// Inherited via IExecutionEvent
 	virtual void onFinishedExecution() override;

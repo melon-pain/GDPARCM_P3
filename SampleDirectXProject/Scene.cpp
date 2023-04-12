@@ -53,6 +53,11 @@ float Scene::GetProgress() const
 	return (float)count / MODEL_COUNT;
 }
 
+SceneState Scene::GetState() const
+{
+	return state;
+}
+
 void Scene::onFinishedExecution()
 {
 	// Load models here based on pool
