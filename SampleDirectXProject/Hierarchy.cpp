@@ -1,7 +1,7 @@
 #include "Hierarchy.h"
 #include "GameObjectManager.h"
 
-Hierarchy::Hierarchy() : UIScreen("Hierarchy", true)
+Hierarchy::Hierarchy() : UIScreen("Hierarchy", false)
 {
 }
 

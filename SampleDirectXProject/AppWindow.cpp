@@ -19,6 +19,7 @@
 #include "ActionHistory.h"
 
 #include "Scene.h"
+#include "SceneHandler.h"
 
 // IMGUI
 #include <ctype.h> 
@@ -79,6 +80,8 @@ void AppWindow::onCreate()
 	GraphicsEngine::get()->getRenderSystem()->getImmediateDeviceContext()->setRenderState(this->m_swap_chain);
 
 	GameObjectManager::Initialize();
+	SceneHandler::Get()->Create();
+
 	UIManager::Initialize(this->m_hwnd);
 
 	/*for (int i = 0; i < 5; i++)

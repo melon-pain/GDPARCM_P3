@@ -1,6 +1,6 @@
 #include "ObjectParentingScreen.h"
 
-ObjectParentingScreen::ObjectParentingScreen() : UIScreen("ObjectParenting", true)
+ObjectParentingScreen::ObjectParentingScreen() : UIScreen("ObjectParenting", false)
 {
 }
 

@@ -16,6 +16,7 @@
 #include "ObjectParentingScreen.h";
 #include "Hierarchy.h"
 #include "CreditsScreen.h"
+#include "SceneViewer.h"
 #include "PlaybackScreen.h"
 #include "ActionScreen.h"
 #include "DebugScreen.h"
@@ -28,9 +29,10 @@ public:
 	const String OBJECT_PROPERTY = "OBJECT_PROPERTY";
 	const String OBJECT_PARENTING = "OBJECT_PARENTING";
 	const String HIERARCHY = "HIERARCHY";
-	const String PLAYBACK = "PLAYBACK";
-	const String ACTION = "ACTION";
-	const String DEBUG = "DEBUG";
+	const String SCENE_VIEWER = "SCENE_VIEWER";
+	//const String PLAYBACK = "PLAYBACK";
+	//const String ACTION = "ACTION";
+	//const String DEBUG = "DEBUG";
 };
 
 class UIManager

@@ -55,9 +55,9 @@ void MenuBar::DrawUI()
             {
                 UIManager::Get()->ToggleUI("HIERARCHY");
             }
-            if (ImGui::MenuItem("Debug"))
+            if (ImGui::MenuItem("Scene Viewer"))
             {
-                UIManager::Get()->ToggleUI("DEBUG");
+                UIManager::Get()->ToggleUI("SCENE_VIEWER");
             }
             ImGui::EndMenu();
         }

@@ -77,7 +77,11 @@ UIManager::UIManager(HWND hwnd)
 	this->uiTable[uiNames.CREDITS_SCREEN] = credits;
 	this->uiList.push_back(credits);
 
-	PlaybackScreen* playback = new PlaybackScreen();
+	SceneViewer* sceneViewer = new SceneViewer();
+	this->uiTable[uiNames.SCENE_VIEWER] = sceneViewer;
+	this->uiList.push_back(sceneViewer);
+
+	/*PlaybackScreen* playback = new PlaybackScreen();
 	this->uiTable[uiNames.PLAYBACK] = playback;
 	this->uiList.push_back(playback);
 
@@ -87,7 +91,7 @@ UIManager::UIManager(HWND hwnd)
 
 	DebugScreen* debug = new DebugScreen();
 	this->uiTable[uiNames.DEBUG] = debug;
-	this->uiList.push_back(debug);
+	this->uiList.push_back(debug);*/
 }
 
 UIManager::~UIManager()
