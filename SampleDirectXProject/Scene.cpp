@@ -13,10 +13,14 @@ Scene::Scene(int _pool) : pool_index(_pool)
 {
 	this->threadPool = new ThreadPool("ThreadPool_"+std::to_string(_pool), MODEL_COUNT);
 	this->threadPool->startScheduler();
+	this->state = SceneState::Standby;
 }
 
 void Scene::LoadScene()
 {
+	this->state = SceneState::Loading;
+	count = 0;
+
 	for (int i = 0; i < MODEL_COUNT; i++)
 	{
 		GameObject* obj = GameObjectManager::Get()->CreateEmpty();
@@ -46,6 +50,15 @@ void Scene::UnloadScene()
 
 	gameObjects.clear();
 	isLoaded = false;
+	this->state = SceneState::Standby;
+}
+
+void Scene::ToggleViewScene(bool flag)
+{
+	for (GameObject* gameObject : gameObjects)
+	{
+		gameObject->SetEnable(flag);
+	}
 }
 
 float Scene::GetProgress() const
@@ -74,5 +87,6 @@ void Scene::onFinishedExecution()
 
 			gameObjects[i]->AttachComponent(comp);
 		}
+		this->state = SceneState::Loaded;
 	}
 }

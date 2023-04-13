@@ -84,13 +84,14 @@ void AppWindow::onCreate()
 
 	UIManager::Initialize(this->m_hwnd);
 
-	/*for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		Scene* scene = new Scene(i);
-	}*/
+		SceneHandler::Get()->RegisterScene(scene);
+	}
 
-	Scene* scene = new Scene(0);
-	scene->LoadScene();
+	//Scene* scene = new Scene(0);
+	//scene->LoadScene();
 }
 
 void AppWindow::onUpdate()

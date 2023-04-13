@@ -19,6 +19,7 @@ public:
 	Scene(int _pool);
 	virtual void LoadScene();
 	void UnloadScene();
+	void ToggleViewScene(bool flag);
 
 	float GetProgress() const;
 	SceneState GetState() const;

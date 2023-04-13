@@ -4,7 +4,7 @@
 //#include "PhysicsComponent.h"
 #include "ActionHistory.h"
 
-ObjectProperty::ObjectProperty() : UIScreen("ObjectProperty", true)
+ObjectProperty::ObjectProperty() : UIScreen("ObjectProperty", false)
 {
 	pos = 0;
 	rot = 0;

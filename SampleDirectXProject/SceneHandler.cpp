@@ -20,5 +20,28 @@ void SceneHandler::Create()
 
 void SceneHandler::RegisterScene(Scene* scene)
 {
+	sceneList.push_back(scene);
+}
 
+void SceneHandler::ViewScene(int sceneIndex)
+{
+	for (int i = 0; i < sceneList.size(); i++)
+	{
+		Scene* scene = sceneList[i];
+		// Show scene
+		if (sceneIndex == i)
+			scene->ToggleViewScene(true);
+		// Hide scene
+		else
+			scene->ToggleViewScene(false);
+	}
+}
+
+void SceneHandler::ViewAllScene()
+{
+	for (int i = 0; i < sceneList.size(); i++)
+	{
+		Scene* scene = sceneList[i];
+		scene->ToggleViewScene(true);
+	}
 }
