@@ -24,6 +24,7 @@ void Scene::LoadScene()
 	for (int i = 0; i < MODEL_COUNT; i++)
 	{
 		GameObject* obj = GameObjectManager::Get()->CreateEmpty();
+		obj->SetEnable(false);
 
 		float X = -2.f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (2.f - -2.f)));
 		float Y = -2.f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (2.f - -2.f)));
@@ -46,6 +47,11 @@ void Scene::UnloadScene()
 	for (GameObject* gameObject : gameObjects)
 	{
 		GameObjectManager::Get()->DestroyGameObject(gameObject);
+	}
+
+	for (int i = 0; i < MODEL_COUNT; i++)
+	{
+		GraphicsEngine::get()->getMeshManager()->UnloadMesh(pools[pool_index][i].c_str());
 	}
 
 	gameObjects.clear();

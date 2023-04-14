@@ -23,6 +23,14 @@ Mesh* MeshManager::GetLoadedMesh(const wchar_t* file_path)
 	return CreateMeshFromFile(file_path);
 }
 
+void MeshManager::UnloadMesh(const wchar_t* file_path)
+{
+	if (!loadedMeshes[file_path])
+		return;
+	delete loadedMeshes[file_path];
+	loadedMeshes.erase(file_path);
+}
+
 Resource* MeshManager::CreateResourceFromFileConcerete(const wchar_t* file_path)
 {
 	mutex->acquire();
