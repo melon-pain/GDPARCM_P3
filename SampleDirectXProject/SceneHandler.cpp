@@ -35,6 +35,7 @@ void SceneHandler::ViewScene(int sceneIndex)
 		else
 			scene->ToggleViewScene(false);
 	}
+	sceneViewing = sceneIndex;
 }
 
 void SceneHandler::ViewAllScene()
@@ -44,4 +45,5 @@ void SceneHandler::ViewAllScene()
 		Scene* scene = sceneList[i];
 		scene->ToggleViewScene(true);
 	}
+	sceneViewing = -1;
 }

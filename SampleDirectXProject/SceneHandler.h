@@ -16,10 +16,11 @@ public:
 	void ViewScene(int sceneIndex);
 	void ViewAllScene();
 	std::vector<Scene*> GetSceneList() { return sceneList; };
-
+	int GetSceneViewed() { return sceneViewing; };
 private:
 	static SceneHandler* instance;
 
 	std::vector<Scene*> sceneList;
+	int sceneViewing = -1; // -1 is view all
 };
 

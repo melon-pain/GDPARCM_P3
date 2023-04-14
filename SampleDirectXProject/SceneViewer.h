@@ -9,6 +9,6 @@ public:
 	~SceneViewer();
 	void DrawUI() override;
 private:
-	const std::string baseText = "Progress: ";
+	//const std::string baseText = "Progress: ";
 };
 
