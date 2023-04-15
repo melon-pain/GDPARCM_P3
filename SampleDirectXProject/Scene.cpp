@@ -32,6 +32,9 @@ void Scene::LoadScene()
 		obj->GetTransform()->SetPosition({ X, Y, Z });
 
 		gameObjects.push_back(obj);
+
+		MeshComponent* mesh = new MeshComponent();
+		obj->AttachComponent(mesh);
 	}
 
 	// Load models here based on pool
@@ -85,13 +88,10 @@ void Scene::onFinishedExecution()
 	if (count == MODEL_COUNT)
 	{
 		isLoaded = true;
-		for (int i = 0; i < MODEL_COUNT; i++)
+		for (int i = 0; i < gameObjects.size(); i++)
 		{
-			MeshComponent* comp = new MeshComponent();
 			Mesh* mesh = GraphicsEngine::get()->getMeshManager()->GetLoadedMesh(pools[pool_index][i].c_str());
-			comp->SetMesh(mesh);
-
-			gameObjects[i]->AttachComponent(comp);
+			gameObjects[i]->GetComponent<MeshComponent>()->SetMesh(mesh);
 		}
 		this->state = SceneState::Loaded;
 	}

@@ -12,10 +12,21 @@ MeshLoader::~MeshLoader()
 {
 }
 
+void MeshLoader::Interrupt()
+{
+	isInterrupted = true;
+}
+
 void MeshLoader::onStartTask()
 {
 	GraphicsEngine::get()->getMeshManager()->GetMutex()->acquire();
 	GraphicsEngine::get()->getMeshManager()->CreateMeshFromFile(Path.c_str());
+	if (isInterrupted)
+	{
+		delete this;
+		GraphicsEngine::get()->getMeshManager()->GetMutex()->release();
+		return;
+	}
 	this->exec->onFinishedExecution();
 	GraphicsEngine::get()->getMeshManager()->GetMutex()->release();
 	//delete after being done

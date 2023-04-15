@@ -53,6 +53,9 @@ void MeshComponent::Update(float deltaTime)
 {
 	//CalculateBounds();
 
+	if (!m_vb || !m_ib || !m_cb)
+		return;
+
 	constant cc;
 	cc.m_time = deltaTime;
 
