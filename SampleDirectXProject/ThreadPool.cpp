@@ -43,7 +43,7 @@ void ThreadPool::run()
 {
 	while (this->running)
 	{
-		IETThread::sleep(500);
+		IETThread::sleep(1000);
 		if (this->pendingActions.empty() == false)
 		{
 			if (this->inactiveThreads.empty() == false)

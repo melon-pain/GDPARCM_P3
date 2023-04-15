@@ -43,6 +43,10 @@ void SceneHandler::ViewAllScene()
 	for (int i = 0; i < sceneList.size(); i++)
 	{
 		Scene* scene = sceneList[i];
+		// Load scene if in standby
+		if (scene->GetState() == SceneState::Standby)
+			scene->LoadScene();
+
 		scene->ToggleViewScene(true);
 	}
 	sceneViewing = -1;

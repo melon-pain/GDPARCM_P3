@@ -28,6 +28,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <vector>
 
 #include <Windows.h>
 
@@ -84,14 +85,18 @@ void AppWindow::onCreate()
 
 	UIManager::Initialize(this->m_hwnd);
 
+	std::vector<Scene*> sceneList;
 	for (int i = 0; i < 5; i++)
 	{
 		Scene* scene = new Scene(i);
 		SceneHandler::Get()->RegisterScene(scene);
+		sceneList.push_back(scene);
 	}
-
-	//Scene* scene = new Scene(0);
-	//scene->LoadScene();
+	// Load all scene on start
+	for (Scene* scene : sceneList)
+	{
+		scene->LoadScene();
+	}
 }
 
 void AppWindow::onUpdate()

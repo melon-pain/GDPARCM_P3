@@ -24,7 +24,6 @@ void SceneViewer::DrawUI()
 	int sceneViewing = SceneHandler::Get()->GetSceneViewed();
 	
 	std::string sceneViewingString = "Current Scene: " + ((sceneViewing == -1) ? "All" : std::to_string(sceneViewing + 1));
-	std::cout << sceneViewingString << std::endl;
 	ImGui::Text(sceneViewingString.c_str());
 	
 	std::string fpsString = "FPS: ";
@@ -66,11 +65,13 @@ void SceneViewer::DrawUI()
 				// Progress range is 0 to 1
 				ImGui::ProgressBar(progress, ImVec2(128, 16), displayChar);
 				// Button 1
-				std::string buttonLabel = "Cancel Loading Scene " + sceneNum;
-				if (ImGui::Button(buttonLabel.c_str()))
+				std::string viewButtonLabel = "View Scene " + sceneNum;
+				if (ImGui::Button(viewButtonLabel.c_str()))
+					scene->ToggleViewScene(true);
+				// Button 2
+				std::string cancelButtonLabel = "Cancel Loading Scene " + sceneNum;
+				if (ImGui::Button(cancelButtonLabel.c_str()))
 					scene->UnloadScene();
-				// Spacing
-				ImGui::Dummy(ImVec2(0.0f, 16.0f));
 			}; break;
 			case SceneState::Loaded: {
 				// Progress Bar
@@ -78,7 +79,7 @@ void SceneViewer::DrawUI()
 				// Button 1
 				std::string buttonLabel = "View Scene " + sceneNum;
 				if (ImGui::Button(buttonLabel.c_str()))
-					SceneHandler::Get()->ViewScene(i);
+					scene->ToggleViewScene(true);
 				// Button 2
 				buttonLabel = "Delete Scene " + sceneNum;
 				if (ImGui::Button(buttonLabel.c_str()))
