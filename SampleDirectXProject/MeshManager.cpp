@@ -1,6 +1,7 @@
 #include "MeshManager.h"
 #include "Mesh.h"
 #include "IETSemaphore.h"
+#include <iostream>
 
 MeshManager::MeshManager()
 {
@@ -25,15 +26,24 @@ Mesh* MeshManager::GetLoadedMesh(const wchar_t* file_path)
 
 void MeshManager::UnloadMesh(const wchar_t* file_path)
 {
-	if (!loadedMeshes[file_path])
+	if (!loadedMeshes.contains(file_path))
 		return;
 	delete loadedMeshes[file_path];
-	loadedMeshes.erase(file_path);
+
+	if (loadedMeshes.contains(file_path))
+	{
+		std::cout << "Delete mesh" << std::endl;
+		loadedMeshes.erase(file_path);
+	}
+}
+
+IETSemaphore* MeshManager::GetMutex() const
+{
+	return mutex;
 }
 
 Resource* MeshManager::CreateResourceFromFileConcerete(const wchar_t* file_path)
 {
-	mutex->acquire();
 	Mesh* mesh = nullptr;
 	try
 	{
@@ -43,8 +53,6 @@ Resource* MeshManager::CreateResourceFromFileConcerete(const wchar_t* file_path)
 
 	if (mesh)
 		loadedMeshes.emplace(file_path, mesh);
-
-	mutex->release();
 
 	return mesh;
 }

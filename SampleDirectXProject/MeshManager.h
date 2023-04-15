@@ -12,6 +12,7 @@ public:
 	Mesh* CreateMeshFromFile(const wchar_t* file_path);
 	Mesh* GetLoadedMesh(const wchar_t* file_path);
 	void UnloadMesh(const wchar_t* file_path);
+	IETSemaphore* GetMutex() const;
 protected:
 	// Inherited via ResourceManager
 	virtual Resource* CreateResourceFromFileConcerete(const wchar_t* file_path) override;
