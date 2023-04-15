@@ -11,7 +11,7 @@ public:
 	~ResourceManager();
 
 	Resource* CreateResourceFromFile(const wchar_t* file_path);
-
+	void RemoveResource(const wchar_t* file_path);
 protected:
 	virtual Resource* CreateResourceFromFileConcerete(const wchar_t* file_path) = 0;
 private:

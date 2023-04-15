@@ -23,6 +23,11 @@ void SceneHandler::RegisterScene(Scene* scene)
 	sceneList.push_back(scene);
 }
 
+void SceneHandler::UnviewScene()
+{
+	sceneViewing = -2;
+}
+
 void SceneHandler::ViewScene(int sceneIndex)
 {
 	for (int i = 0; i < sceneList.size(); i++)

@@ -32,8 +32,11 @@ void MeshManager::UnloadMesh(const wchar_t* file_path)
 
 	if (loadedMeshes.contains(file_path))
 	{
-		std::cout << "Delete mesh" << std::endl;
+		std::wstring wstr(file_path);
+		std::string file_path_string(wstr.begin(), wstr.end());
+		std::cout << "Mesh deleted: " << file_path_string << std::endl;
 		loadedMeshes.erase(file_path);
+		RemoveResource(file_path);
 	}
 }
 

@@ -13,6 +13,7 @@ public:
 	static SceneHandler* Get() { return instance; };
 	
 	void RegisterScene(Scene* scene);
+	void UnviewScene();
 	void ViewScene(int sceneIndex);
 	void ViewAllScene();
 	std::vector<Scene*> GetSceneList() { return sceneList; };
@@ -21,6 +22,6 @@ private:
 	static SceneHandler* instance;
 
 	std::vector<Scene*> sceneList;
-	int sceneViewing = -1; // -1 is view all
+	int sceneViewing = -2; // -2 is none, -1 is view all
 };
 
