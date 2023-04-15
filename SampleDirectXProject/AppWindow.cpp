@@ -112,6 +112,7 @@ void AppWindow::onUpdate()
 	GraphicsEngine::get()->getRenderSystem()->getImmediateDeviceContext()->setViewportSize(rc.right - rc.left, rc.bottom - rc.top);
 
 	const float deltaTime = EngineTime::getDeltaTime();
+	this->fps = floor(1.0f / deltaTime);
 
 	// Update scene camera
 	sceneCamera->Update(deltaTime);

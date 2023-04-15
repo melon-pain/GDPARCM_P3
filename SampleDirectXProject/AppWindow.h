@@ -36,6 +36,7 @@ public:
 	static void Initialize();
 
 	void update();
+	float getFPS() { return this->fps; };
 
 public:
 	SwapChain* GetSwapChain() const;
@@ -44,7 +45,7 @@ private:
 
 private:
 	class SceneCamera* sceneCamera = nullptr;
-
+	float fps = 0.0f;
 	//IMObjectProperty* imObjProp;
 };
 

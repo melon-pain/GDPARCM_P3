@@ -82,7 +82,7 @@ bool Window::init()
 		return false;
 	
 	m_hwnd=::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, "MyWindowClass", "DirectX Application", 
-		WS_CAPTION|WS_SYSMENU, CW_USEDEFAULT, CW_USEDEFAULT, 1024, 768,
+		WS_CAPTION|WS_SYSMENU, CW_USEDEFAULT, CW_USEDEFAULT, 1600, 900,
 		NULL, NULL, m_hinstance, this);
 	
 	if (!m_hwnd) 
